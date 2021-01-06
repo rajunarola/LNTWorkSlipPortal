@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6906b65af3454d40b3ba729c993803a0" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="LNTSlipPortalModel.Document" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.EmployeeMaster" Width="1.5" PointX="3" PointY="21.875" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.ProductCategory" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.Project" Width="1.5" PointX="0.75" PointY="15.625" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.RAW" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.RoleMaster" Width="1.5" PointX="0.75" PointY="18.375" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.Scope" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.ScopeOfWork" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.Status" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.StatusLog" Width="1.5" PointX="5.25" PointY="2.875" />
+        <EntityTypeShape EntityType="LNTSlipPortalModel.UserMaster" Width="1.5" PointX="3" PointY="18.125" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_RAWS_Document" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_EmployeeMaster_RoleMaster" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_RAWS_ProductCategory" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_RAWS_Project" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_RAWS_Scope" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_RAWS_ScopeOfWork" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_StatusLog_RAWS" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_UserMaster_UserMaster" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_StatusLog_StatusLog" />
+        <AssociationConnector Association="LNTSlipPortalModel.FK_StatusLog_UserMaster" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

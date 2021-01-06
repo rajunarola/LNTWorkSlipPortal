@@ -1,0 +1,97 @@
+﻿
+@model LNTSlipPortal_Repository.Data.EmployeeMaster
+@{
+    ViewBag.Title = "Manage Employee";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/select2/dist/css/select2.min.css" rel="stylesheet" />
+<script src="~/Content/select2/dist/js/Select2Common.js"></script>
+<script src="~/Content/select2/dist/js/select2.full.min.js"></script>
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">@ViewBag.Check Employee</h4>
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active"><a href="@Url.Action("Index", "Employee" )">Back</a></li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div id="customloader">
+        <div class="loading">Loading&#8230;</div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card ">
+            <div class="card-body">
+                @using (Html.BeginForm("ManageEmployee", "Employee", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", id = "ModalForm", data_parsley_validate = "", novalidate = "" }))
+                {
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            @Html.HiddenFor(x => x.EmployeeId)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EmployeeName, "Employee Name"):<span class="text-danger">*</span>
+                                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Employee Name", parsleyTrigger = "change", required = "true" } })
+                                <span class="text-danger">@Html.ValidationMessageFor(model => model.EmployeeName)</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group ">
+                                @Html.LabelFor(model => model.PSNumber, "PS Number"):<span class="text-danger">*</span>
+                                @Html.EditorFor(model => model.PSNumber, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "PS Number", parsleyTrigger = "change", required = "true" } })
+                                <span class="text-danger">  @Html.ValidationMessageFor(model => model.PSNumber)</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group ">
+                                @Html.LabelFor(model => model.RoleId, "Role"):<span class="text-danger">*</span>
+                                @Html.DropdownListForSelect2Remote(model => model.RoleId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control", @id = "RoleId", @style = "width:100%;", @Mode = "RoleEmployee" }, true, "Select Role", Model.RoleName, Model.RoleId.ToString())
+                                <span class="text-danger"> @Html.ValidationMessageFor(model => model.RoleId)</span>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            @if (ViewBag.Check == "Add")
+                            {
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            }
+                            else
+                            {
+                                <button type="submit" id="update" class="btn btn-primary ">Update</button>
+                            }
+                            <a href="@Url.Action("Index", "Employee")" id="btnClose" class="btn btn-primary">Close</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+          $("#customloader").hide();
+        
+        ab();
+        $('#add').click(function () {
+             $("#customloader").show();
+        })
+        $('#update').click(function () {
+            $("#customloader").show();
+        })
+
+    })
+    function ab() {
+        $("#RoleId option[value='Customer']").remove();
+    }
+</script>
+
+
+

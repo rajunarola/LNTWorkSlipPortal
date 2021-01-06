@@ -1,0 +1,162 @@
+﻿@using LNTSlipPortal.Models
+@{
+    ViewBag.Title = "RAWS Page";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Manage RAWS</h4>
+            @{ var sessionRole = Session["RoleId"];
+                var UserRole = sessionRole != null ? Convert.ToInt32(sessionRole) : 0;
+                }
+            @if (UserRole != 0 && UserRole ==  Convert.ToInt32(Common.Role.PMG1) || UserRole ==  Convert.ToInt32(Common.Role.SCG1))
+            {
+                <a href="@Url.Action("ManageRAWS", "RAWS")" data-repeater-create="" class="btn btn-primary mr-1">
+                    <span class="fa fa-plus mr-1">
+                        Add
+                    </span>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive tblEmployeelist">
+                    <div id="customloader">
+                        <div class="loading">Loading&#8230;</div>
+                    </div>
+                    <table id="tblRAWSList" class="table table-striped table-bordered w-100">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+@section scripts{
+    <script src="~/Scripts/DataTableCommon.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/assets/js/pages/loader.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var columns = [
+                { "title": "SR#", "data": "RowNumber", "bSortable": false, "className": "alignCenter", "width": "20px" },
+                { "title": "RAWS No", "data": "RAWSNO"},
+                { "title": "Initiator", "data": "UserName" },
+                 {
+                    "title": "Created Date", "data": "CreatedAt", "width": "30px;",
+                    "render": function (data, type, full, meta) {
+                        return ConvertDateddmmyyyy(data);
+                    }
+                },
+                { "title": "Project Name", "data": "ProjectName" },
+                { "title": "Project No", "data": "ProjectId" },
+                { "title": "Item ID", "data": "ProductCatNo" },
+                { "title": "Item Description", "data": "ProductDescription" },
+                { "title": "Current State", "data": "StatusName" },
+                {
+                   "title" :"Change State","id":"ChangeState", "data": "Status","autoWidth": true,"className": "ChangeState alignCenter  ",
+                    "render": function (data, type, full, meta) {
+                        var userRole = @Session["RoleId"];
+                        var StatusName = "";
+                        switch (full.Status) {
+                            case @Convert.ToInt32(Common.RAWSStatus.Draft):
+                                if (userRole == @Convert.ToInt32(Common.Role.PMG1) || userRole == @Convert.ToInt32(Common.Role.SCG1))
+                                    StatusName = "Submit for Approval";
+                                    break;
+                            case @Convert.ToInt32(Common.RAWSStatus.Initiated):
+                                if (userRole ==  @Convert.ToInt32(Common.Role.PMG2)|| userRole ==  @Convert.ToInt32(Common.Role.SCG2))
+                                        StatusName = "Approve RAWs";
+                                    break;
+                            case @Convert.ToInt32(Common.RAWSStatus.Approved_by_PMG_SCG):
+                                if (userRole == @Convert.ToInt32(Common.Role.QC))
+                                        StatusName = "Acknowledge RAWs";
+                                    break;
+                             case @Convert.ToInt32(Common.RAWSStatus.Acknowledged_by_QC):
+                                if (userRole ==  @Convert.ToInt32(Common.Role.Shop))
+                                        StatusName = "Accept RAWs";
+                                    break;
+                            case @Convert.ToInt32(Common.RAWSStatus.Accepted_by_Shop):
+                                if (userRole ==  @Convert.ToInt32(Common.Role.Planner))
+                                        StatusName = "Validate RAWs";
+                                    break;
+                            case @Convert.ToInt32(Common.RAWSStatus.Validated_by_Planner):
+                                if (userRole ==  @Convert.ToInt32(Common.Role.Shop))
+                                        return '<button class="btn btn-success btn-sm user-list-btn-approve"  style="width:150px;" onclick="CheckVerifyRAWS(\'' +
+                                            data + '\',\'' + full.RAWSID + '\',\'' + full.ActualManHours + '\')"> Check & Verify </button>';
+                            case @Convert.ToInt32(Common.RAWSStatus.Checked_verified):
+                                if (userRole ==  @Convert.ToInt32(Common.Role.QC) && full.Status== @Convert.ToInt32(Common.RAWSStatus.Checked_verified))
+                                        StatusName = "Check";
+                                    break;
+                        }
+                        if (StatusName != "")
+                        return '<button class="btn btn-success btn-sm user-list-btn-approve"  style="width:150px;" onclick="ChangeRAWSStatus(\'' +
+                                data + '\',\'' + full.RAWSID + '\')"> ' + StatusName + '</button>';
+                        return "";
+                      }
+                 },
+                {
+                    "bSortable": false,"autoWidth": true,"className": "alignCenter", "title": "Action", "render": function (data, type, full, meta) {
+                        var userRole = @Session["RoleId"].ToString();
+                        if (userRole ==  @Convert.ToInt32(Common.Role.PMG1) || userRole ==  @Convert.ToInt32(Common.Role.SCG1)) {
+                            var aa = '<div style="width:150px;"><a href="@Url.Action("ManageRAWS", "RAWS")/RAWSID" class=" customButton" data-id="RAWSID"><i class="fa fa-edit"></i></a>' +
+                                "&nbsp; &nbsp; &nbsp;<a data-editmodal href=\"javascript:void(0)\" onclick=\"Delete(this,'/RAWS/DeleteRAWS')\" class=\" customButtonDelete \" data-id='" + full.RAWSID + "'><i class=\"fa fa-trash\"></i></a>" +
+                                '&nbsp; &nbsp; &nbsp;<a data-editmodal target="_blank" href="@Url.Action("RAWSReport", "RAWS")/' + full.RAWSID + '" class=" customButton" ><i class="fa fa-file"></i></a></div>';
+                            aa = aa.replace("RAWSID", full.RAWSID);
+                            return aa;
+
+                        } else {
+                            var aa = '';
+                            if (userRole ==  @Convert.ToInt32(Common.Role.Shop) && full.Status ==  @Convert.ToInt32(Common.RAWSStatus.Validated_by_Planner)) {
+                                aa = '<div style="width:150px;"> <a   href="@Url.Action("ManageRAWS", "RAWS")/RAWSID" class=" customButton" data-id="RAWSID"><i class="fa fa-edit"></i></a>' +
+                                    '&nbsp; &nbsp; &nbsp;<a data-editmodal target="_blank" href="@Url.Action("RAWSReport", "RAWS")/' + full.RAWSID + '" class=" customButton" ><i class="fa fa-file"></i></a></div>';
+                            } else {
+                                aa= '<div style="width:150px;"><a   href="@Url.Action("ManageRAWS", "RAWS")/RAWSID" class=" customButton" data-id="RAWSID"><i class="fa fa-eye"></i></a>'+
+                                '&nbsp; &nbsp; &nbsp;<a data-editmodal target="_blank" href="@Url.Action("RAWSReport", "RAWS")/' + full.RAWSID + '" class=" customButton" ><i class="fa fa-file"></i></a></div>';
+                            }
+
+                            aa = aa.replace("RAWSID", full.RAWSID);
+                            return aa;
+                        }
+                    }
+                },
+            ];
+            $('#tblRAWSList').createGrid({
+                Columns: columns,
+                Mode: 'RAWS',
+                SortColumn: '3',
+                SortOrder: 'desc',
+                PageLength: '25',
+                UserRole:@Session["RoleId"].ToString()
+            });
+        });
+
+        $(window).on('load',function () {
+            $("#customloader").hide();
+        });
+        function ChangeRAWSStatus(status, id) {
+            $.ajax({
+                url: "/RAWS/ChangeRAWSStatus",
+                type: "POST",
+                dataType: "json",
+                data: { id: id, statusid: status },
+                success: function (data) {
+                    swal.fire({ title: "RAWS", text: "Status Change Successfully.", type: "success", showConfirmButton: false });
+                    setTimeout(function () { location.reload(); }, 1200);
+                }
+            });
+        }
+        function CheckVerifyRAWS(status,id,objActualManHours) {
+            if (objActualManHours == null || objActualManHours <= 0)
+                swal.fire({ title: "RAWS", text: "Please add Acutal Man Days after then you'll change state.", type: "warning", showConfirmButton: true });
+            else
+                ChangeRAWSStatus(status, id);
+        }
+
+    </script>
+
+}

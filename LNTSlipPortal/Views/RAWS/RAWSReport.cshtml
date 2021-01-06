@@ -1,0 +1,266 @@
+﻿@model LNTSlipPortal_Repository.Data.RAWDTO
+@{
+    ViewBag.Title = "Manage Employee";
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/icons/favicon.png">
+    <link href="~/assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <!-- App Css-->
+    <script src="~/assets/libs/jquery/jquery.min.js"></script>
+</head>
+
+<body data-sidebar="dark">
+    <div class="main-content">
+        <div class="page-content-report">
+                <div class="mb-4 text-center">
+                    <h3 class="text-center"> <b>Report Page</b></h3>
+                </div>
+            <div class="container-fluid">
+                <div class="lt-report-page">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <img src="~/assets/images/LNTlogo1.png" alt="" class="img-fluid" width="75">
+                                        </div>
+
+                                        <div class="col-lg-9  align-self-center">
+                                            <h4 class="mb-0 font-size-18">Rework/ Additional work Slip (No-@Html.DisplayFor(model => model.ProjectName) - R/A-m/E-@Html.DisplayFor(model => model.ProjectId))</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 ltrp-head">
+                                            <div class="float-left mt-5">
+
+                                                <h6 class="mb-2 text-uppercase"><b>Project Name* : </b>@Html.DisplayFor(model => model.ProjectName) </h6>
+                                                <h6><b>Project NO* : </b>@Html.DisplayFor(model => model.ProjectId) </h6>
+                                            </div>
+                                            <div class="float-right ltrph-right mt-5">
+                                                <h6 class="mb-2 row"><b class="col-6">Rework/Addition Work No : </b><span class="col-6">@Html.DisplayFor(model => model.RAWSNO)</span></h6>
+                                                <h6 class="mb-2 row"><b class="col-6">Date : </b> <span class="col-6">@DateTime.Now</span></h6>
+                                                <h6 class="row"><b class="col-6">NCR NO* : </b> <span class="col-6">@Html.DisplayFor(model => model.NCRNo) </span></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="table-responsive mt-5">
+                                                <table class="table table-bordered mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="30%">Product Cat No/Item ID*</th>
+                                                            <td>@Html.DisplayFor(model => model.ProductCatNo) </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th width="30%">Product Description*</th>
+                                                            <td>@Html.DisplayFor(model => model.ProductDescription)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="30%">Describe Rework/ Additional Work*</th>
+                                                            <td>@Html.DisplayFor(model => model.AdditionalWork)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="30%">Total QTY*</th>
+                                                            <td>@Html.DisplayFor(model => model.TotalQuantity)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="30%">Scope*</th>
+                                                            <td>@Html.DisplayFor(model => model.ScopeName)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="30%">Total Man Days Req*</th>
+                                                            <td>@Html.DisplayFor(model => model.TotalManHours)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="30%">Actual Man Days Taken (Shop)*</th>
+                                                            <td>@Html.DisplayFor(model => model.ActualManHours)</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-7">
+                                            <div class="table-responsive mt-4">
+                                                <table class="table table-bordered mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Scope of work*</th>
+                                                            <th>Applicable*</th>
+                                                            <th>Scope of work*</th>
+                                                            <th>Applicable*</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-uppercase"><i>Grinding</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.GrindingLabel)</i></td>
+                                                            <td class="text-uppercase"><i>Testing</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.TestingLabel)</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase"><i>Paint Touch up</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.PaintTouchUpLabel)</i></td>
+                                                            <td class="text-uppercase"><i>Assembly</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.AssemblyLabel)</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase"><i>Replacement</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.ReplacementLabel)</i></td>
+                                                            <td class="text-uppercase"><i>Others</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Other)</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase" colspan="4">
+                                                                <i><b>Remarks :- </b> @Html.DisplayFor(model => model.Other)</i>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <div class="table-responsive mt-4">
+                                                <table class="table tblFixture table-bordered mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Jig Fixtures, Special Tools and Instruments (If Required)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center align-middle">@Html.DisplayFor(model => model.JigFixtures_SpecialToolsLabel)</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="table-responsive mt-4">
+                                                <table class="table table-bordered mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Documents</th>
+                                                            <th class="text-capitalize">Applicable</th>
+                                                            <th>CAT NO</th>
+                                                            <th>REV.</th>
+                                                            <th>Documents</th>
+                                                            <th class="text-capitalize">Applicable</th>
+                                                            <th>CAT NO</th>
+                                                            <th>REV.</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-uppercase"><i>BOM</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.BOMLabel)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.BOMCatNo)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.BOMRevision)</i></td>
+                                                            <td class="text-uppercase"><i>Testing Documents</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.TestingDocumentLabel)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.TestingDocumentCatNo)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.TestingDocumentRevision)</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase"><i>Assembly Inst.</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.AssemblyListLabel)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.AssemblyListCatNo)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.AssemblyListRevision)</i></td>
+                                                            <td class="text-uppercase"><i>Wiring / Hydrulic Scheme</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.WiringSchemeLabel)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.WiringSchemeCatNo)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.WiringSchemeRevision)</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase"><i>General Assembly</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.GeneralAssemblyLabel)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.GeneralAssemblyCatNo)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.GeneralAssemblyRevision)</i></td>
+                                                            <td class="text-uppercase"><i>Product Data</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.ProductDataLabel)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.ProductDataCatNo)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.ProductDataRevision)</i></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="table-responsive mt-4">
+                                                <table class="table table-bordered mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>&nbsp;</th>
+                                                            <th>Initiator (PMG/SCG)</th>
+                                                            <th>Approved by (PMG/SCG)</th>
+                                                            <th class="text-capitalize">Acknowledge by QC (Before work)</th>
+                                                            <th class="text-capitalize">Accepted by shop</th>
+                                                            <th class="text-capitalize">Validate by Planner</th>
+                                                            <th class="text-capitalize">Checked and Verified by shop</th>
+                                                            <th class="text-capitalize">Checked by (QC)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-uppercase text-nowrap"><b>Name</b></td>
+                                                            <td><i>@Html.DisplayFor(model => model.InitiatorName)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Approved_By_PMG_SCGName)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Acknowlwdge_By_QCName)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Accepted_By_ShopName)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Validated_By_PlannerName)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Checked_Verified_By_ShopName)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Checked_By_QCName)</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase text-nowrap"><b>P S NO</b></td>
+                                                            <td><i>@Html.DisplayFor(model => model.InitiatorPSNumber)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Approved_By_PMG_SCGPSNumber)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Acknowlwdge_By_QCPSNumber)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Accepted_By_ShopPSNumber)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Validated_By_PlannerPSNumber)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Checked_Verified_By_ShopPSNumber)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Checked_By_QCPSNumber)</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-uppercase text-nowrap"><b>Date & Time</b></td>
+                                                            <td><i>@Html.DisplayFor(model => model.InitiatorCreatedAt)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Approved_By_PMG_SCGCreatedAt)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Acknowlwdge_By_QCCreatedAt)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Accepted_By_ShopCreatedAt)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Validated_By_PlannerCreatedAt)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Checked_Verified_By_ShopCreatedAt)</i></td>
+                                                            <td><i>@Html.DisplayFor(model => model.Checked_By_QCCreatedAt)</i></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content End-->
+    </div>
+
+    <div class="rightbar-overlay"></div>
+</body>
+</html>
+

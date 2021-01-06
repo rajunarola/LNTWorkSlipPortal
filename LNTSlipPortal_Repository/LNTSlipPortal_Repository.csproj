@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7098A15D-4C8C-4455-91EA-5FD94D3D1BE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LNTSlipPortal_Repository</RootNamespace>
+    <AssemblyName>LNTSlipPortal_Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataServices\CommonFunctions.cs" />
+    <Compile Include="DataServices\CreatePara.cs" />
+    <Compile Include="DataServices\common.cs" />
+    <Compile Include="DataServices\dalc.cs" />
+    <Compile Include="Data\Document.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EmployeeMaster.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LNTSlipPortalData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LNTSlipPortalData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LNTSlipPortalData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LNTSlipPortalData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LNTSlipPortalData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProductCategory.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Project.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RAW.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RoleMaster.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Scope.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ScopeOfWork.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Status.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StatusLog.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserMaster.cs">
+      <DependentUpon>LNTSlipPortalData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\UserMetaData.cs" />
+    <Compile Include="DTO\RAWSMetaData .cs" />
+    <Compile Include="DTO\EmployeeMetaData.cs" />
+    <Compile Include="DTO\AutoCompleteResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceContract\IDocument_Repository.cs" />
+    <Compile Include="ServiceContract\IRAWS_Repository.cs" />
+    <Compile Include="ServiceContract\IStatusLog_Repository.cs" />
+    <Compile Include="ServiceContract\IStatus_Repository.cs" />
+    <Compile Include="ServiceContract\IScopeOfWork_Repository.cs" />
+    <Compile Include="ServiceContract\IUser_Repository.cs" />
+    <Compile Include="ServiceContract\IScope_Repository.cs" />
+    <Compile Include="ServiceContract\IProject_Repository.cs" />
+    <Compile Include="ServiceContract\IProductCategory_Repository.cs" />
+    <Compile Include="ServiceContract\IRole_Repository.cs" />
+    <Compile Include="ServiceContract\IEmployee_Repository.cs" />
+    <Compile Include="Service\RAWS_Repository.cs" />
+    <Compile Include="Service\Project_Repository.cs" />
+    <Compile Include="Service\ProductCategory_Repository.cs" />
+    <Compile Include="Service\StatusLog_Repository.cs" />
+    <Compile Include="Service\Status_Repository.cs" />
+    <Compile Include="Service\User_Repository.cs" />
+    <Compile Include="Service\Scope_Repository.cs" />
+    <Compile Include="Service\ScopeOfWork_Repository.cs" />
+    <Compile Include="Service\Document_Repository.cs" />
+    <Compile Include="Service\Role_Repository.cs" />
+    <Compile Include="Service\Employee_Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Data\LNTSlipPortalData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LNTSlipPortalData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\LNTSlipPortalData.edmx.diagram">
+      <DependentUpon>LNTSlipPortalData.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\LNTSlipPortalData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LNTSlipPortalData.edmx</DependentUpon>
+      <LastGenOutput>LNTSlipPortalData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\LNTSlipPortalData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LNTSlipPortalData.edmx</DependentUpon>
+      <LastGenOutput>LNTSlipPortalData.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

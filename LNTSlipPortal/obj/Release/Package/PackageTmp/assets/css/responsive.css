@@ -1,0 +1,41 @@
+
+@media(max-width: 1440px){
+	.login-bx .login-del{max-width: 30%;}
+}
+
+@media(max-width: 1399px){
+	.login-bx .login-del{max-width: 35%;}
+}
+
+@media(max-width: 1199px){
+	.login-bx .login-del{max-width: 45%;}
+	.tblEmployeelist .toolbar {left:50%}
+}
+
+@media(max-width: 991px){
+	.login-bx .login-del{max-width: 55%;}
+}
+
+@media(max-width: 767px){
+	.login-bx .login-del{max-width: 55%;padding-bottom: 50px;}
+}
+
+@media(max-width: 575px){
+	.login-bx .login-del{max-width: 100%;padding-bottom: 0px;}
+
+	.tblEmployeelist div.dataTables_wrapper div.dataTables_filter {
+		position: inherit;
+		right: inherit;
+		top: inherit;
+		width: auto;
+	}
+	.tblEmployeelist .toolbar {
+		position: inherit;
+		left: inherit;
+		top: inherit;
+		transform: inherit;
+		width: 100%;
+		padding: 20px 0 30px;
+		text-align: center;
+	}
+}
