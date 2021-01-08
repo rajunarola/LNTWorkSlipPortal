@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LNTSlipPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LNTSlipPortalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Documents" EntityType="LNTSlipPortalModel.Document" />
+    <EntitySet Name="EmployeeMasters" EntityType="LNTSlipPortalModel.EmployeeMaster" />
+    <EntitySet Name="ProductCategories" EntityType="LNTSlipPortalModel.ProductCategory" />
+    <EntitySet Name="Projects" EntityType="LNTSlipPortalModel.Project" />
+    <EntitySet Name="RAWS" EntityType="LNTSlipPortalModel.RAW" />
+    <EntitySet Name="RoleMasters" EntityType="LNTSlipPortalModel.RoleMaster" />
+    <EntitySet Name="Scopes" EntityType="LNTSlipPortalModel.Scope" />
+    <EntitySet Name="ScopeOfWorks" EntityType="LNTSlipPortalModel.ScopeOfWork" />
+    <EntitySet Name="Status" EntityType="LNTSlipPortalModel.Status" />
+    <EntitySet Name="StatusLogs" EntityType="LNTSlipPortalModel.StatusLog" />
+    <EntitySet Name="UserMasters" EntityType="LNTSlipPortalModel.UserMaster" />
+    <AssociationSet Name="FK_RAWS_Document" Association="LNTSlipPortalModel.FK_RAWS_Document">
+      <End Role="Document" EntitySet="Documents" />
+      <End Role="RAW" EntitySet="RAWS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeMaster_RoleMaster" Association="LNTSlipPortalModel.FK_EmployeeMaster_RoleMaster">
+      <End Role="RoleMaster" EntitySet="RoleMasters" />
+      <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWS_ProductCategory" Association="LNTSlipPortalModel.FK_RAWS_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="RAW" EntitySet="RAWS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWS_Project" Association="LNTSlipPortalModel.FK_RAWS_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="RAW" EntitySet="RAWS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWS_Scope" Association="LNTSlipPortalModel.FK_RAWS_Scope">
+      <End Role="Scope" EntitySet="Scopes" />
+      <End Role="RAW" EntitySet="RAWS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWS_ScopeOfWork" Association="LNTSlipPortalModel.FK_RAWS_ScopeOfWork">
+      <End Role="ScopeOfWork" EntitySet="ScopeOfWorks" />
+      <End Role="RAW" EntitySet="RAWS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusLog_RAWS" Association="LNTSlipPortalModel.FK_StatusLog_RAWS">
+      <End Role="RAW" EntitySet="RAWS" />
+      <End Role="StatusLog" EntitySet="StatusLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMaster_UserMaster" Association="LNTSlipPortalModel.FK_UserMaster_UserMaster">
+      <End Role="RoleMaster" EntitySet="RoleMasters" />
+      <End Role="UserMaster" EntitySet="UserMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusLog_StatusLog" Association="LNTSlipPortalModel.FK_StatusLog_StatusLog">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="StatusLog" EntitySet="StatusLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusLog_UserMaster" Association="LNTSlipPortalModel.FK_StatusLog_UserMaster">
+      <End Role="UserMaster" EntitySet="UserMasters" />
+      <End Role="StatusLog" EntitySet="StatusLogs" />
+    </AssociationSet>
+    <FunctionImport Name="GetAutoCompleteData">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="Count" Mode="In" Type="Int32" />
+      <Parameter Name="TableName" Mode="In" Type="String" />
+      <Parameter Name="DisplayColumnName" Mode="In" Type="String" />
+      <Parameter Name="ValueColumnName" Mode="In" Type="String" />
+      <Parameter Name="WhereClause" Mode="In" Type="String" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetDataForGridWeb">
+      <Parameter Name="TableName" Mode="In" Type="String" />
+      <Parameter Name="ColumnsName" Mode="In" Type="String" />
+      <Parameter Name="SortOrder" Mode="In" Type="String" />
+      <Parameter Name="SortColumn" Mode="In" Type="String" />
+      <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+      <Parameter Name="RecordPerPage" Mode="In" Type="Int32" />
+      <Parameter Name="WhereClause" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="DocumentId" />
+    </Key>
+    <Property Name="DocumentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BOM" Type="Boolean" />
+    <Property Name="BOMRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BOMCatNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AssemblyList" Type="Boolean" />
+    <Property Name="AssemblyListRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AssemblyListCatNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralAssembly" Type="Boolean" />
+    <Property Name="GeneralAssemblyRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralAssemblyCatNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TestingDocument" Type="Boolean" />
+    <Property Name="TestingDocumentRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TestingDocumentCatNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="WiringScheme" Type="Boolean" />
+    <Property Name="WiringSchemeRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="WiringSchemeCatNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProductData" Type="Boolean" />
+    <Property Name="ProductDataRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProductDataCatNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RAWS" Relationship="LNTSlipPortalModel.FK_RAWS_Document" FromRole="Document" ToRole="RAW" />
+  </EntityType>
+  <EntityType Name="EmployeeMaster">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PSNumber" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="RoleMaster" Relationship="LNTSlipPortalModel.FK_EmployeeMaster_RoleMaster" FromRole="EmployeeMaster" ToRole="RoleMaster" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ProductCatId" />
+    </Key>
+    <Property Name="ProductCatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCatNo" Type="Int32" Nullable="false" />
+    <Property Name="ProductCatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RAWS" Relationship="LNTSlipPortalModel.FK_RAWS_ProductCategory" FromRole="ProductCategory" ToRole="RAW" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+    </Key>
+    <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RAWS" Relationship="LNTSlipPortalModel.FK_RAWS_Project" FromRole="Project" ToRole="RAW" />
+  </EntityType>
+  <EntityType Name="RAW">
+    <Key>
+      <PropertyRef Name="RAWSID" />
+    </Key>
+    <Property Name="RAWSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" />
+    <Property Name="RAWSNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCatId" Type="Int32" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdditionalWork" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalQuantity" Type="Int32" />
+    <Property Name="ScopeId" Type="Int32" />
+    <Property Name="TotalManHours" Type="Int32" />
+    <Property Name="ActualManHours" Type="Int32" />
+    <Property Name="ScopeOfWorkId" Type="Int32" />
+    <Property Name="JigFixtures_SpecialTools" Type="Boolean" />
+    <Property Name="JigFixtures_Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentId" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Work" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="NCRNo" Type="Int64" />
+    <NavigationProperty Name="Document" Relationship="LNTSlipPortalModel.FK_RAWS_Document" FromRole="RAW" ToRole="Document" />
+    <NavigationProperty Name="ProductCategory" Relationship="LNTSlipPortalModel.FK_RAWS_ProductCategory" FromRole="RAW" ToRole="ProductCategory" />
+    <NavigationProperty Name="Project" Relationship="LNTSlipPortalModel.FK_RAWS_Project" FromRole="RAW" ToRole="Project" />
+    <NavigationProperty Name="Scope" Relationship="LNTSlipPortalModel.FK_RAWS_Scope" FromRole="RAW" ToRole="Scope" />
+    <NavigationProperty Name="ScopeOfWork" Relationship="LNTSlipPortalModel.FK_RAWS_ScopeOfWork" FromRole="RAW" ToRole="ScopeOfWork" />
+    <NavigationProperty Name="StatusLogs" Relationship="LNTSlipPortalModel.FK_StatusLog_RAWS" FromRole="RAW" ToRole="StatusLog" />
+  </EntityType>
+  <EntityType Name="RoleMaster">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EmployeeMasters" Relationship="LNTSlipPortalModel.FK_EmployeeMaster_RoleMaster" FromRole="RoleMaster" ToRole="EmployeeMaster" />
+    <NavigationProperty Name="UserMasters" Relationship="LNTSlipPortalModel.FK_UserMaster_UserMaster" FromRole="RoleMaster" ToRole="UserMaster" />
+  </EntityType>
+  <EntityType Name="Scope">
+    <Key>
+      <PropertyRef Name="ScopeId" />
+    </Key>
+    <Property Name="ScopeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScopeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RAWS" Relationship="LNTSlipPortalModel.FK_RAWS_Scope" FromRole="Scope" ToRole="RAW" />
+  </EntityType>
+  <EntityType Name="ScopeOfWork">
+    <Key>
+      <PropertyRef Name="ScopeOfWorkId" />
+    </Key>
+    <Property Name="ScopeOfWorkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grinding" Type="Boolean" />
+    <Property Name="PaintTouchUp" Type="Boolean" />
+    <Property Name="Replacement" Type="Boolean" />
+    <Property Name="Testing" Type="Boolean" />
+    <Property Name="Assembly" Type="Boolean" />
+    <Property Name="Other" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RAWS" Relationship="LNTSlipPortalModel.FK_RAWS_ScopeOfWork" FromRole="ScopeOfWork" ToRole="RAW" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StatusLogs" Relationship="LNTSlipPortalModel.FK_StatusLog_StatusLog" FromRole="Status" ToRole="StatusLog" />
+  </EntityType>
+  <EntityType Name="StatusLog">
+    <Key>
+      <PropertyRef Name="StatusLogId" />
+    </Key>
+    <Property Name="StatusLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RAWSID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="RAW" Relationship="LNTSlipPortalModel.FK_StatusLog_RAWS" FromRole="StatusLog" ToRole="RAW" />
+    <NavigationProperty Name="Status" Relationship="LNTSlipPortalModel.FK_StatusLog_StatusLog" FromRole="StatusLog" ToRole="Status" />
+    <NavigationProperty Name="UserMaster" Relationship="LNTSlipPortalModel.FK_StatusLog_UserMaster" FromRole="StatusLog" ToRole="UserMaster" />
+  </EntityType>
+  <EntityType Name="UserMaster">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PSNumber" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoleMaster" Relationship="LNTSlipPortalModel.FK_UserMaster_UserMaster" FromRole="UserMaster" ToRole="RoleMaster" />
+    <NavigationProperty Name="StatusLogs" Relationship="LNTSlipPortalModel.FK_StatusLog_UserMaster" FromRole="UserMaster" ToRole="StatusLog" />
+  </EntityType>
+  <Association Name="FK_RAWS_Document">
+    <End Type="LNTSlipPortalModel.Document" Role="Document" Multiplicity="0..1" />
+    <End Type="LNTSlipPortalModel.RAW" Role="RAW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Document">
+        <PropertyRef Name="DocumentId" />
+      </Principal>
+      <Dependent Role="RAW">
+        <PropertyRef Name="DocumentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeMaster_RoleMaster">
+    <End Type="LNTSlipPortalModel.RoleMaster" Role="RoleMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.EmployeeMaster" Role="EmployeeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleMaster">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="EmployeeMaster">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWS_ProductCategory">
+    <End Type="LNTSlipPortalModel.ProductCategory" Role="ProductCategory" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.RAW" Role="RAW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCatId" />
+      </Principal>
+      <Dependent Role="RAW">
+        <PropertyRef Name="ProductCatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWS_Project">
+    <End Type="LNTSlipPortalModel.Project" Role="Project" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.RAW" Role="RAW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectId" />
+      </Principal>
+      <Dependent Role="RAW">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWS_Scope">
+    <End Type="LNTSlipPortalModel.Scope" Role="Scope" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.RAW" Role="RAW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scope">
+        <PropertyRef Name="ScopeId" />
+      </Principal>
+      <Dependent Role="RAW">
+        <PropertyRef Name="ScopeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWS_ScopeOfWork">
+    <End Type="LNTSlipPortalModel.ScopeOfWork" Role="ScopeOfWork" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.RAW" Role="RAW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScopeOfWork">
+        <PropertyRef Name="ScopeOfWorkId" />
+      </Principal>
+      <Dependent Role="RAW">
+        <PropertyRef Name="ScopeOfWorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusLog_RAWS">
+    <End Type="LNTSlipPortalModel.RAW" Role="RAW" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.StatusLog" Role="StatusLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RAW">
+        <PropertyRef Name="RAWSID" />
+      </Principal>
+      <Dependent Role="StatusLog">
+        <PropertyRef Name="RAWSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMaster_UserMaster">
+    <End Type="LNTSlipPortalModel.RoleMaster" Role="RoleMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.UserMaster" Role="UserMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleMaster">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserMaster">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusLog_StatusLog">
+    <End Type="LNTSlipPortalModel.Status" Role="Status" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.StatusLog" Role="StatusLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="StatusLog">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusLog_UserMaster">
+    <End Type="LNTSlipPortalModel.UserMaster" Role="UserMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LNTSlipPortalModel.StatusLog" Role="StatusLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMaster">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="StatusLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

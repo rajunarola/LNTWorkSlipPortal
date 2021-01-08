@@ -1,0 +1,109 @@
+Error on 9/7/2020 3:22:04 PM ,Exception Message:Schema specified is not valid. Errors: 
+Data.LNTSlipPortalData.msl(92,12) : error 2019: Member Mapping specified is not valid. The type 'Edm.String[Nullable=True,DefaultValue=,MaxLength=,Unicode=,FixedLength=]' of member 'NCRNo' in type 'LNTSlipPortalModel.RAW' is not compatible with 'SqlServer.bigint[Nullable=True,DefaultValue=]' of member 'NCRNo' in type 'LNTSlipPortalModel.Store.RAWS'.,Inner Message:,Line:   at System.Data.Entity.Core.Mapping.StorageMappingItemCollection.Init(EdmItemCollection edmCollection, StoreItemCollection storeCollection, IEnumerable`1 xmlReaders, IList`1 filePaths, Boolean throwOnError)
+   at System.Data.Entity.Core.Mapping.StorageMappingItemCollection..ctor(EdmItemCollection edmCollection, StoreItemCollection storeCollection, IEnumerable`1 xmlReaders, IList`1 filePaths)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataCache.LoadStoreCollection(EdmItemCollection edmItemCollection, MetadataArtifactLoader loader)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataCache.<>c__DisplayClass5.<>c__DisplayClass7.<GetMetadataWorkspace>b__1()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Core.Metadata.Edm.MetadataCache.<>c__DisplayClass5.<>c__DisplayClass7.<GetMetadataWorkspace>b__4()
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.LoadAndCheckItemCollection[T](Func`1 itemCollectionLoader)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.<>c__DisplayClass16.<.ctor>b__f()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.GetItemCollection(DataSpace dataSpace, Boolean required)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.GetItemCollection(DataSpace dataSpace)
+   at System.Data.Entity.Core.Objects.ObjectContext.InitializeMappingViewCacheFactory(DbContext owner)
+   at System.Data.Entity.Core.Objects.ObjectContext..ctor(EntityConnection connection, Boolean isConnectionConstructor, ObjectQueryExecutionPlanFactory objectQueryExecutionPlanFactory, Translator translator, ColumnMapFactory columnMapFactory)
+   at System.Data.Entity.Internal.InternalConnection.CreateObjectContextFromConnectionModel()
+   at System.Data.Entity.Internal.LazyInternalConnection.CreateObjectContextFromConnectionModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LNTSlipPortal_Repository.Service.User_Repository.LogInUsers(Int32 PSNumber, String Password) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\User_Repository.cs:line 60,Additional Msg:LogIn error,Repository
+Error on 9/7/2020 3:22:48 PM ,Exception Message:Schema specified is not valid. Errors: 
+Data.LNTSlipPortalData.msl(92,12) : error 2019: Member Mapping specified is not valid. The type 'Edm.String[Nullable=True,DefaultValue=,MaxLength=,Unicode=,FixedLength=]' of member 'NCRNo' in type 'LNTSlipPortalModel.RAW' is not compatible with 'SqlServer.bigint[Nullable=True,DefaultValue=]' of member 'NCRNo' in type 'LNTSlipPortalModel.Store.RAWS'.,Inner Message:,Line:   at System.Data.Entity.Core.Mapping.StorageMappingItemCollection.Init(EdmItemCollection edmCollection, StoreItemCollection storeCollection, IEnumerable`1 xmlReaders, IList`1 filePaths, Boolean throwOnError)
+   at System.Data.Entity.Core.Mapping.StorageMappingItemCollection..ctor(EdmItemCollection edmCollection, StoreItemCollection storeCollection, IEnumerable`1 xmlReaders, IList`1 filePaths)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataCache.LoadStoreCollection(EdmItemCollection edmItemCollection, MetadataArtifactLoader loader)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataCache.<>c__DisplayClass5.<>c__DisplayClass7.<GetMetadataWorkspace>b__1()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Core.Metadata.Edm.MetadataCache.<>c__DisplayClass5.<>c__DisplayClass7.<GetMetadataWorkspace>b__4()
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.LoadAndCheckItemCollection[T](Func`1 itemCollectionLoader)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.<>c__DisplayClass16.<.ctor>b__f()
+   at System.Lazy`1.CreateValue()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.GetItemCollection(DataSpace dataSpace, Boolean required)
+   at System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace.GetItemCollection(DataSpace dataSpace)
+   at System.Data.Entity.Core.Objects.ObjectContext.InitializeMappingViewCacheFactory(DbContext owner)
+   at System.Data.Entity.Core.Objects.ObjectContext..ctor(EntityConnection connection, Boolean isConnectionConstructor, ObjectQueryExecutionPlanFactory objectQueryExecutionPlanFactory, Translator translator, ColumnMapFactory columnMapFactory)
+   at System.Data.Entity.Internal.InternalConnection.CreateObjectContextFromConnectionModel()
+   at System.Data.Entity.Internal.LazyInternalConnection.CreateObjectContextFromConnectionModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LNTSlipPortal_Repository.Service.User_Repository.LogInUsers(Int32 PSNumber, String Password) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\User_Repository.cs:line 60,Additional Msg: LogIn error,Repository
+Error on 9/7/2020 3:37:13 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 42,Additional Msg: Update,Repository;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 3:37:13 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 47
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 219,Additional Msg: ManageRAWS,IU;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 3:38:09 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 42,Additional Msg: Update,Repository;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 3:38:09 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 47
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 219,Additional Msg: ManageRAWS,IU;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 3:38:28 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 42,Additional Msg: Update,Repository;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 3:38:29 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 47
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 219,Additional Msg: ManageRAWS,IU;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 3:39:53 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 42,Additional Msg: Update,Repository;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 3:39:53 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 47
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 219,Additional Msg: ManageRAWS,IU;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 5:11:28 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 42,Additional Msg: Update,Repository;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 5:11:28 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 47
+   at LNTSlipPortal.Controllers.RAWSController.ChangeRAWSStatus(Int32 id, Int32 statusid) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 360,Additional Msg: ChangeStatusRAWS ,id=6;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 5:12:21 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 42,Additional Msg: Update,Repository;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.
+Error on 9/7/2020 5:12:33 PM ,Exception Message:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Inner Message:,Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.RAWS_Repository.UpdateRAWS(RAW objRAW) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\RAWS_Repository.cs:line 47
+   at LNTSlipPortal.Controllers.RAWSController.ChangeRAWSStatus(Int32 id, Int32 statusid) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 360,Additional Msg: ChangeStatusRAWS ,id=6;System.Data.Entity.DynamicProxies.RAW_425AC421CD80143A65A69C335E23B64F24467513B63837076AE30CB453D325F3:NCRNo can't be blank.

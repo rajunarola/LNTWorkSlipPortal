@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LNTSlipPortalModelStoreContainer" CdmEntityContainer="LNTSlipPortalEntities">
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.Document">
+        <MappingFragment StoreEntitySet="Document">
+          <ScalarProperty Name="ProductDataCatNo" ColumnName="ProductDataCatNo" />
+          <ScalarProperty Name="ProductDataRevision" ColumnName="ProductDataRevision" />
+          <ScalarProperty Name="ProductData" ColumnName="ProductData" />
+          <ScalarProperty Name="WiringSchemeCatNo" ColumnName="WiringSchemeCatNo" />
+          <ScalarProperty Name="WiringSchemeRevision" ColumnName="WiringSchemeRevision" />
+          <ScalarProperty Name="WiringScheme" ColumnName="WiringScheme" />
+          <ScalarProperty Name="TestingDocumentCatNo" ColumnName="TestingDocumentCatNo" />
+          <ScalarProperty Name="TestingDocumentRevision" ColumnName="TestingDocumentRevision" />
+          <ScalarProperty Name="TestingDocument" ColumnName="TestingDocument" />
+          <ScalarProperty Name="GeneralAssemblyCatNo" ColumnName="GeneralAssemblyCatNo" />
+          <ScalarProperty Name="GeneralAssemblyRevision" ColumnName="GeneralAssemblyRevision" />
+          <ScalarProperty Name="GeneralAssembly" ColumnName="GeneralAssembly" />
+          <ScalarProperty Name="AssemblyListCatNo" ColumnName="AssemblyListCatNo" />
+          <ScalarProperty Name="AssemblyListRevision" ColumnName="AssemblyListRevision" />
+          <ScalarProperty Name="AssemblyList" ColumnName="AssemblyList" />
+          <ScalarProperty Name="BOMCatNo" ColumnName="BOMCatNo" />
+          <ScalarProperty Name="BOMRevision" ColumnName="BOMRevision" />
+          <ScalarProperty Name="BOM" ColumnName="BOM" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeMasters">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.EmployeeMaster">
+        <MappingFragment StoreEntitySet="EmployeeMaster">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="PSNumber" ColumnName="PSNumber" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategories">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.ProductCategory">
+        <MappingFragment StoreEntitySet="ProductCategory">
+          <ScalarProperty Name="ProductCatName" ColumnName="ProductCatName" />
+          <ScalarProperty Name="ProductCatNo" ColumnName="ProductCatNo" />
+          <ScalarProperty Name="ProductCatId" ColumnName="ProductCatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RAWS">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.RAW">
+        <MappingFragment StoreEntitySet="RAWS">
+          <ScalarProperty Name="NCRNo" ColumnName="NCRNo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Work" ColumnName="Work" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="JigFixtures_Detail" ColumnName="JigFixtures_Detail" />
+          <ScalarProperty Name="JigFixtures_SpecialTools" ColumnName="JigFixtures_SpecialTools" />
+          <ScalarProperty Name="ScopeOfWorkId" ColumnName="ScopeOfWorkId" />
+          <ScalarProperty Name="ActualManHours" ColumnName="ActualManHours" />
+          <ScalarProperty Name="TotalManHours" ColumnName="TotalManHours" />
+          <ScalarProperty Name="ScopeId" ColumnName="ScopeId" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+          <ScalarProperty Name="AdditionalWork" ColumnName="AdditionalWork" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductCatId" ColumnName="ProductCatId" />
+          <ScalarProperty Name="RAWSNO" ColumnName="RAWSNO" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="RAWSID" ColumnName="RAWSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleMasters">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.RoleMaster">
+        <MappingFragment StoreEntitySet="RoleMaster">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scopes">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.Scope">
+        <MappingFragment StoreEntitySet="Scope">
+          <ScalarProperty Name="ScopeName" ColumnName="ScopeName" />
+          <ScalarProperty Name="ScopeId" ColumnName="ScopeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScopeOfWorks">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.ScopeOfWork">
+        <MappingFragment StoreEntitySet="ScopeOfWork">
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="Assembly" ColumnName="Assembly" />
+          <ScalarProperty Name="Testing" ColumnName="Testing" />
+          <ScalarProperty Name="Replacement" ColumnName="Replacement" />
+          <ScalarProperty Name="PaintTouchUp" ColumnName="PaintTouchUp" />
+          <ScalarProperty Name="Grinding" ColumnName="Grinding" />
+          <ScalarProperty Name="ScopeOfWorkId" ColumnName="ScopeOfWorkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusLogs">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.StatusLog">
+        <MappingFragment StoreEntitySet="StatusLog">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="RAWSID" ColumnName="RAWSID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusLogId" ColumnName="StatusLogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMasters">
+      <EntityTypeMapping TypeName="LNTSlipPortalModel.UserMaster">
+        <MappingFragment StoreEntitySet="UserMaster">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PSNumber" ColumnName="PSNumber" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAutoCompleteData" FunctionName="LNTSlipPortalModel.Store.GetAutoCompleteData" />
+    <FunctionImportMapping FunctionImportName="GetDataForGridWeb" FunctionName="LNTSlipPortalModel.Store.GetDataForGridWeb" />
+  </EntityContainerMapping>
+</Mapping>

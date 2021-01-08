@@ -1,0 +1,11 @@
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\bin\Debug\LNTSlipPortal_Repository.dll.config
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\bin\Debug\LNTSlipPortal_Repository.dll
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\bin\Debug\LNTSlipPortal_Repository.pdb
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\bin\Debug\EntityFramework.dll
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\bin\Debug\EntityFramework.xml
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\obj\Debug\LNTSlipPortal_Repository.csproj.CopyComplete
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\obj\Debug\LNTSlipPortal_Repository.dll
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\obj\Debug\LNTSlipPortal_Repository.pdb
+E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\obj\Debug\LNTSlipPortal_Repository.csprojAssemblyReference.cache

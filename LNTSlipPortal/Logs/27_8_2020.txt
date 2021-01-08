@@ -1,0 +1,88 @@
+Error on 8/27/2020 9:46:05 AM ,Exception Message:Object reference not set to an instance of an object.,Inner Message:,Line:   at LNTSlipPortal.Controllers.RAWSController.SaveDocument(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 203
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 133,Additional Msg:ManageRAWS,IU
+Error on 8/27/2020 9:47:23 AM ,Exception Message:Object reference not set to an instance of an object.,Inner Message:,Line:   at LNTSlipPortal.Controllers.RAWSController.SaveDocument(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 203
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 133,Additional Msg: ManageRAWS,IU
+Error on 8/27/2020 4:06:06 PM ,Exception Message:Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.,Inner Message:System.Data.Entity.Core.OptimisticConcurrencyException: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ValidateRowsAffected(Int64 rowsAffected, UpdateCommand source)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges(),Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.ScopeOfWork_Repository.UpdateScopeOfWork(ScopeOfWork objScopeOfWork) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\ScopeOfWork_Repository.cs:line 77,Additional Msg: Update,Repository
+Error on 8/27/2020 4:06:06 PM ,Exception Message:Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.,Inner Message:System.Data.Entity.Core.OptimisticConcurrencyException: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ValidateRowsAffected(Int64 rowsAffected, UpdateCommand source)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges(),Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.ScopeOfWork_Repository.UpdateScopeOfWork(ScopeOfWork objScopeOfWork) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\ScopeOfWork_Repository.cs:line 83
+   at LNTSlipPortal.Controllers.RAWSController.SaveScopeOfWork(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 236
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 168,Additional Msg: ManageRAWS,IU
+Error on 8/27/2020 4:07:08 PM ,Exception Message:Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.,Inner Message:System.Data.Entity.Core.OptimisticConcurrencyException: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ValidateRowsAffected(Int64 rowsAffected, UpdateCommand source)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges(),Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.ScopeOfWork_Repository.UpdateScopeOfWork(ScopeOfWork objScopeOfWork) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\ScopeOfWork_Repository.cs:line 77,Additional Msg: Update,Repository
+Error on 8/27/2020 4:07:08 PM ,Exception Message:Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.,Inner Message:System.Data.Entity.Core.OptimisticConcurrencyException: Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ValidateRowsAffected(Int64 rowsAffected, UpdateCommand source)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges(),Line:   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at LNTSlipPortal_Repository.Service.ScopeOfWork_Repository.UpdateScopeOfWork(ScopeOfWork objScopeOfWork) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal_Repository\Service\ScopeOfWork_Repository.cs:line 83
+   at LNTSlipPortal.Controllers.RAWSController.SaveScopeOfWork(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 236
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 168,Additional Msg: ManageRAWS,IU
+Error on 8/27/2020 4:28:17 PM ,Exception Message:Nullable object must have a value.,Inner Message:,Line:   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at LNTSlipPortal.Controllers.RAWSController.SaveDocument(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 189
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 144,Additional Msg: ManageRAWS,IU
+Error on 8/27/2020 4:32:27 PM ,Exception Message:Nullable object must have a value.,Inner Message:,Line:   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at LNTSlipPortal.Controllers.RAWSController.SaveDocument(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 189
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 144,Additional Msg: ManageRAWS,IU
+Error on 8/27/2020 4:34:40 PM ,Exception Message:Nullable object must have a value.,Inner Message:,Line:   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Nullable`1.get_Value()
+   at LNTSlipPortal.Controllers.RAWSController.SaveDocument(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 189
+   at LNTSlipPortal.Controllers.RAWSController.ManageRAWS(RAW obj) in E:\Development\L&T\LNTSlipPortal\LNTSlipPortal\Controllers\RAWSController.cs:line 144,Additional Msg: ManageRAWS,IU

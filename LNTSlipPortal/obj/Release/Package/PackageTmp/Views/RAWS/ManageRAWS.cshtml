@@ -1,0 +1,559 @@
+﻿@model LNTSlipPortal_Repository.Data.RAW
+@using LNTSlipPortal.Models
+@{
+    ViewBag.Title = "Manage Employee";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/select2/dist/css/select2.min.css" rel="stylesheet" />
+<script src="~/Content/select2/dist/js/Select2Common.js"></script>
+<script src="~/Content/select2/dist/js/select2.full.min.js"></script>
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">@ViewBag.Check RAWS</h4>
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active"><a href="@Url.Action("Index", "RAWS" )">Back</a></li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="disableForm" id="divRAWS">
+    <div id="customloader">
+        <div class="loading">Loading&#8230;</div>
+    </div>
+    <!-- end page title -->
+    @using (Html.BeginForm("ManageRAWS", "RAWS", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", id = "ModalForm", data_parsley_validate = "", novalidate = "" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bb-1 bg-white">
+                        <h4 class="p-0 m-0 text-uppercase">General Information</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @Html.HiddenFor(x => x.RAWSID)
+                            @Html.HiddenFor(x => x.Status)
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.ProjectId, "Project"):<span class="text-danger">
+                                        *
+                                    </span>
+                                    <div class="customSelect">
+                                        @Html.DropdownListForSelect2Remote(model => model.ProjectId, Enumerable.Empty<SelectListItem>(), new { @onchange = "onChangeProject(this.value)", @class = "form-control", @id = "ProjectId", @style = "width:100%;", @Mode = "ProjectRAWS" }, true, "Select Project", Model.ProjectName, Model.ProjectId.ToString())
+                                    </div>
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.ProjectId)</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.ProjectId, "Project No."):<span class="text-danger">*</span>
+                                    @Html.EditorFor(model => model.ProjectId, new { htmlAttributes = new { @Id = "ProjectNo", @class = "form-control ", @readonly = "readonly", maxlength = "50", PlaceHolder = "Project No", parsleyTrigger = "change", required = "true" } })
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.RAWSNO, "RAWS No."):<span class="text-danger">*</span>
+                                    @Html.EditorFor(model => model.RAWSNO, new { htmlAttributes = new { @class = "form-control ", @readonly = "readonly", maxlength = "50", PlaceHolder = "RAWS No", parsleyTrigger = "change", required = "true" } })
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.ScopeId, "Scope"):<span class="text-danger">*</span>
+
+                                    <div class="customSelect">
+                                        @Html.DropdownListForSelect2Remote(model => model.ScopeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control", @id = "ScopeId", @style = "width:100%;", @Mode = "ScopeRAWS" }, true, "Select Scope", Model.ScopeName, Model.ScopeId.ToString())
+                                    </div>
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.ScopeId)</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.ProductCatId, "Product Cat No."):<span class="text-danger">*</span>
+                                    <div class="customSelect">
+                                        @Html.DropdownListForSelect2Remote(model => model.ProductCatId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control", @id = "ProductCatId", @style = "width:100%;", @Mode = "ProductCategoryRAWS" }, true, "Select Product Cat NO", Model.ProductCatNo, Model.ProductCatId.ToString())
+                                    </div>
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.ProductCatId)</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ProductDescription, "Product Description"):
+                                    @Html.TextAreaFor(model => model.ProductDescription, new { @class = "form-control ", PlaceHolder = "Product Description", parsleyTrigger = "change", required = "true" })
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.ProductDescription)</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TotalQuantity, "Total Quantity"):<span class="text-danger">*</span>
+                                    @Html.EditorFor(model => model.TotalQuantity, new { htmlAttributes = new { @class = "form-control ", PlaceHolder = "Total Quantity", parsleyTrigger = "change", required = "true" } })
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.TotalQuantity)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.Work, "Work"):<span class="text-danger">*</span>
+                                    <div>
+                                        <div class="form-check-inline">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Work, "Additional", new { @checked = true, @class = "custom-control-input", @id = "Addtionalwork" })
+                                                <label class="custom-control-label" for="Addtionalwork">Additional Work</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Work, "Rework", new { @class = "custom-control-input", @id = "Rework" })
+                                                <label class="custom-control-label" for="Rework">Rework</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.Work)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.TotalManHours, "Total Man Days"):<span class="text-danger">*</span>
+                                    @Html.EditorFor(model => model.TotalManHours, new { htmlAttributes = new { @id = "TotalManHours", @name = "TotalManHours", @class = "form-control ", PlaceHolder = "Total Man Days", parsleyTrigger = "change", required = "true" } })
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.TotalManHours)</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.NCRNo, "NCR No."):<span class="text-danger">*</span>
+                                    @Html.EditorFor(model => model.NCRNo, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "NCR No", parsleyTrigger = "change", required = "true" } })
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.NCRNo)</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group ">
+                                    @Html.LabelFor(model => model.JigFixtures_SpecialTools, "Jig fixtures, special tools & instrument"):<span class="text-danger">*</span>
+                                    <div>
+                                        <div class="form-check-inline">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.JigFixtures_SpecialTools, true, new { @class = "custom-control-input", @id = "ToolsYes" })
+                                                <label class="custom-control-label" for="ToolsYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.JigFixtures_SpecialTools, false, new { @class = "custom-control-input", @id = "ToolsNo" })
+                                                <label class="custom-control-label" for="ToolsNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.JigFixtures_Detail, "Jigs & Fixtures Detail"):
+                                    @Html.TextAreaFor(model => model.JigFixtures_Detail, new { @class = "form-control", PlaceHolder = "Jigs & Fixtures detail", parsleyTrigger = "change", required = "true" })
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.JigFixtures_Detail)</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.AdditionalWork, "Additional Work / Rework"):
+                                    @Html.TextAreaFor(model => model.AdditionalWork, new { @class = "form-control", PlaceHolder = "Additional Work", parsleyTrigger = "change", required = "true" })
+                                    <span class="text-danger"> @Html.ValidationMessageFor(model => model.AdditionalWork)</span>
+                                </div>
+                            </div>
+
+                            @if (Model.Status >= 6)
+                            {
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group ">
+                                        @Html.LabelFor(model => model.ActualManHours, "Actual Man Days"):<span class="text-danger">*</span>
+                                        @Html.EditorFor(model => model.ActualManHours, new { htmlAttributes = new { @id = "ActualManHours", @name = "ActualManHours", @class = "form-control ", PlaceHolder = "Actual Man Hours", parsleyTrigger = "change", required = "true" } })
+                                        <span class="text-danger"> @Html.ValidationMessageFor(model => model.ActualManHours)</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bb-1 bg-white">
+                        <h4 class="p-0 m-0 text-uppercase">Scope of Work </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.HiddenFor(x => x.ScopeOfWorkId)
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.Grinding, "Grinding:", new { @class = "col-md-3 my-1 control-label" })
+                                    <div class="col-md-9">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Grinding, true, new { @class = "custom-control-input", @id = "GrindingYes" })
+                                                <label class="custom-control-label" for="GrindingYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Grinding, false, new { @class = "custom-control-input", @id = "GrindingNo" })
+                                                <label class="custom-control-label" for="GrindingNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.PaintTouchUp, "PaintTouchUp:", new { @class = "col-md-3 my-1 control-label" })
+                                    <div class="col-md-9">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.PaintTouchUp, true, new { @class = "custom-control-input", @id = "PaintTouchUpYes" })
+                                                <label class="custom-control-label" for="PaintTouchUpYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.PaintTouchUp, false, new { @class = "custom-control-input", @id = "PaintTouchUpNo" })
+                                                <label class="custom-control-label" for="PaintTouchUpNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.Replacement, "Replacement:", new { @class = "col-md-3 my-1 control-label" })
+                                    <div class="col-md-9">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Replacement, true, new { @class = "custom-control-input", @id = "ReplacementYes" })
+                                                <label class="custom-control-label" for="ReplacementYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Replacement, false, new { @class = "custom-control-input", @id = "ReplacementNo" })
+                                                <label class="custom-control-label" for="ReplacementNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.Testing, "Testing:", new { @class = "col-md-3 my-1 control-label" })
+                                    <div class="col-md-9">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Testing, true, new { @class = "custom-control-input", @id = "TestingYes" })
+                                                <label class="custom-control-label" for="TestingYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Testing, false, new { @class = "custom-control-input", @id = "TestingNo" })
+                                                <label class="custom-control-label" for="TestingNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.Assembly, "Assembly:", new { @class = "col-md-3 my-1 control-label" })
+                                    <div class="col-md-9">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Assembly, true, new { @class = "custom-control-input", @id = "AssemblyYes" })
+                                                <label class="custom-control-label" for="AssemblyYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.Assembly, false, new { @class = "custom-control-input", @id = "AssemblyNo" })
+                                                <label class="custom-control-label" for="AssemblyNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Other, "Other"):
+                                        @Html.TextAreaFor(model => model.Other, new { @class = "form-control ", PlaceHolder = "Other", parsleyTrigger = "change", required = "true" })
+                                        <span class="text-danger"> @Html.ValidationMessageFor(model => model.Other)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bb-1 bg-white">
+                        <h4 class="p-0 m-0 text-uppercase">Document </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                @Html.HiddenFor(x => x.DocumentId)
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.BOM, "BOM:", new { @class = "col-md-2 my-1 control-label" })
+                                    <div class="col-md-2">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.BOM, true, new { @class = "custom-control-input", @id = "BOMYes" })
+                                                <label class="custom-control-label" for="BOMYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.BOM, false, new { @class = "custom-control-input", @id = "BOMNo" })
+                                                <label class="custom-control-label" for="BOMNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(model => model.BOMRevision, "Revision:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.BOMRevision, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Revision", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                    @Html.LabelFor(model => model.BOMCatNo, "Cat No:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.BOMCatNo, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Cat No", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.AssemblyList, "Assembly List:", new { @class = "col-md-2 my-1 control-label" })
+                                    <div class="col-md-2">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.AssemblyList, true, new { @class = "custom-control-input", @id = "AssemblyListYes" })
+                                                <label class="custom-control-label" for="AssemblyListYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.AssemblyList, false, new { @class = "custom-control-input", @id = "AssemblyListNo" })
+                                                <label class="custom-control-label" for="AssemblyListNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(model => model.AssemblyListRevision, "Revision:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.AssemblyListRevision, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Revision", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                    @Html.LabelFor(model => model.AssemblyListCatNo, "Cat No:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.AssemblyListCatNo, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Cat No", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.GeneralAssembly, "General Assembly:", new { @class = "col-md-2 my-1 control-label" })
+                                    <div class="col-md-2">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.GeneralAssembly, true, new { @class = "custom-control-input", @id = "GeneralAssemblyYes" })
+                                                <label class="custom-control-label" for="GeneralAssemblyYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.GeneralAssembly, false, new { @class = "custom-control-input", @id = "GeneralAssemblyNo" })
+                                                <label class="custom-control-label" for="GeneralAssemblyNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(model => model.GeneralAssemblyRevision, "Revision:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.GeneralAssemblyRevision, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Revision", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                    @Html.LabelFor(model => model.GeneralAssemblyCatNo, "Cat No:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.GeneralAssemblyCatNo, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Cat No", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.TestingDocument, "Testing Document:", new { @class = "col-md-2 my-1 control-label" })
+                                    <div class="col-md-2">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.TestingDocument, true, new { @class = "custom-control-input", @id = "TestingDocumentYes" })
+                                                <label class="custom-control-label" for="TestingDocumentYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.TestingDocument, false, new { @class = "custom-control-input", @id = "TestingDocumentNo" })
+                                                <label class="custom-control-label" for="TestingDocumentNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(model => model.TestingDocumentRevision, "Revision:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.TestingDocumentRevision, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Revision", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                    @Html.LabelFor(model => model.TestingDocumentCatNo, "Cat No:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.TestingDocumentCatNo, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Cat No", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.WiringScheme, "Wiring Scheme:", new { @class = "col-md-2 my-1 control-label" })
+                                    <div class="col-md-2">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.WiringScheme, true, new { @class = "custom-control-input", @id = "WiringSchemeYes" })
+                                                <label class="custom-control-label" for="WiringSchemeYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.WiringScheme, false, new { @class = "custom-control-input", @id = "WiringSchemeNo" })
+                                                <label class="custom-control-label" for="WiringSchemeNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(model => model.WiringSchemeRevision, "Revision:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.WiringSchemeRevision, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Revision", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                    @Html.LabelFor(model => model.WiringSchemeCatNo, "Cat No:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.WiringSchemeCatNo, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Cat No", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 row">
+                                    @Html.LabelFor(model => model.ProductData, "Product Data:", new { @class = "col-md-2 my-1 control-label" })
+                                    <div class="col-md-2">
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.ProductData, true, new { @class = "custom-control-input", @id = "ProductDataYes" })
+                                                <label class="custom-control-label" for="ProductDataYes">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-check-inline my-1">
+                                            <div class="custom-control custom-radio">
+                                                @Html.RadioButtonFor(model => model.ProductData, false, new { @class = "custom-control-input", @id = "ProductDataNo" })
+                                                <label class="custom-control-label" for="ProductDataNo">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @Html.LabelFor(model => model.ProductDataRevision, "Revision:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.ProductDataRevision, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Revision", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                    @Html.LabelFor(model => model.ProductDataCatNo, "Cat No:", new { @class = "col-md-1 my-1 control-label" })
+                                    <div class="col-md-3">
+                                        <div class="form-check-inline my-1">
+                                            @Html.EditorFor(model => model.ProductDataCatNo, new { htmlAttributes = new { @class = "form-control ", maxlength = "50", PlaceHolder = "Cat No", parsleyTrigger = "change", required = "true" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-3" id="SubmitSection">
+            @{ var sessionRole = Session["RoleId"];
+                var UserRole = sessionRole != null ? Convert.ToInt32(sessionRole) : 0;
+            }
+            @if (UserRole != 0 && (UserRole == Convert.ToInt32(Common.Role.PMG1) ||UserRole == Convert.ToInt32(Common.Role.SCG1) || (UserRole == Convert.ToInt32(Common.Role.Shop) && Model.Status ==  Convert.ToInt32(Common.RAWSStatus.Validated_by_Planner))))
+            {
+                if (ViewBag.Check == "Add")
+                {
+                    <button type="submit" class="btn btn-primary">Add</button>
+                }
+                else
+                {
+                    <button type="submit" id="update" name='update' class="btn btn-primary ">Update</button>
+                }
+                <a href="@Url.Action("Index", "RAWS")" id="btnClose" name="close" class="btn btn-primary">Close</a>
+            }
+        </div>
+        <br />
+    }
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+         $("#customloader").hide();
+        var sessionRole = @Session["RoleId"];
+        if (sessionRole == @Convert.ToInt32(Common.Role.PMG1) || sessionRole == @Convert.ToInt32(Common.Role.SCG1)) {
+            $("#divRAWS").removeClass("disableForm");
+        }
+        if (@Model.Status == @Convert.ToInt32(Common.RAWSStatus.Validated_by_Planner) && sessionRole == @Convert.ToInt32(Common.Role.Shop)) {
+            $("#ActualManHours").addClass("enablesection");
+            $("#update").addClass("enablesection");
+            $("#btnClose").addClass("enablesection");
+        }
+        ab();
+        $('#add').click(function () {
+             $("#customloader").show();
+        })
+        $('#update').click(function () {
+            $("#customloader").show();
+        })
+
+    })
+    function ab() {
+        $("#ProjectId option[value='Customer']").remove();
+        $("#ProductCatId option[value='Customer']").remove();
+        $("#ScopeId option[value='Customer']").remove();
+
+    }
+    function onChangeProject(projectId) {
+        $("#ProjectNo").val(projectId)
+    }
+</script>
+
+

@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Employee Page";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Manage Employees</h4>
+            <a href="@Url.Action("ManageEmployee","Employee")" data-repeater-create="" class="btn btn-primary mr-1">
+                <span class="fa fa-plus mr-1">
+                    Add
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div id="customloader">
+                    <div class="loading">Loading&#8230;</div>
+                </div>
+                <div class="table-responsive tblEmployeelist">
+                    <table id="tblEmployeeList" class="table table-striped table-bordered w-100">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+@section scripts{
+    <script src="~/Scripts/DataTableCommon.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/assets/js/pages/loader.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+             //loaderstart();
+            var columns = [
+                { "title": "SR#", "data": "RowNumber", "bSortable": false, "className": "alignCenter", "width": "20px" },
+                { "title": "Employee Name", "data": "EmployeeName" },
+                { "title": "Role Name", "data": "RoleName" },
+                { "title": "PSNumber", "data": "PSNumber" },
+                {
+                    "title": "Created Date", "data": "CreatedAt",
+                    "render": function (data, type, full, meta) {
+                        return ConvertDateddmmyyyy(data);
+                    }
+                },
+                 {
+                      "bSortable": false,"width": "30px", "data": "IsActive","className": "alignCenter","title": "Active", "render": function (data, type, full, meta) {
+                         if (data == 1) {
+                             return '<label class="switch" > <input type="checkbox"  onchange="ActiveOrInActiveEmployee(\'' +
+                                data +
+                                '\',\'' +
+                                full.EmployeeId +
+                                '\')" checked>  <span class="slider round"></span></label>';
+                         } else {
+                              return '<label class="switch" > <input type="checkbox"  onchange="ActiveOrInActiveEmployee(\'' +
+                                data +
+                                '\',\'' +
+                                full.EmployeeId +
+                                '\')">  <span class="slider round"></span></label>';
+                         }
+                      }
+                  },
+                  {
+                      "bSortable": false,  "width": "100px","className": "alignCenter","title": "Action", "autoWidth": true,  "render": function (data, type, full, meta) {
+                          var aa = '<a  href="@Url.Action("ManageEmployee", "Employee")/EmployeeId"  class="anchorDetail customButton" data-id="EmployeeId"><i class="fa fa-edit"></i></a>' +
+                              "&nbsp; &nbsp; &nbsp;<a data-editmodal href=\"javascript:void(0)\" onclick=\"Delete(this,'/Employee/DeleteEmployee')\" class=\" customButtonDelete \" data-id='" + full.EmployeeId + "'><i class=\"fa fa-trash\"></i></a>";
+                          aa = aa.replace("EmployeeId", full.EmployeeId);
+                          return aa;
+
+                      }
+                  },
+            ];
+            $('#tblEmployeeList').createGrid({
+                Columns: columns,
+                Mode: 'EmployeeMaster',
+                SortColumn: '4',
+                SortOrder: 'desc',
+            });
+        });
+        $(window).on('load',function () {
+            $("#customloader").hide();
+        });
+
+        function ActiveOrInActiveEmployee(isActive, id) {
+            $.ajax({
+                url: "/Employee/ActiveEmployee",
+                type: "POST",
+                dataType: "json",
+                data: { id: id},
+                success: function (data) {
+
+                    if (isActive=="false") {
+                        swal.fire({ title: "Employee", text: "Employee Active Successfully.", type: "success", showConfirmButton: false });
+                    } else {
+                        swal.fire({ title: "Employee", text: "Employee InActive Successfully.", type: "success", showConfirmButton: false });
+                    }
+                    setTimeout(function(){ location.reload(); }, 1000);
+                }
+
+            });
+
+}
+
+    </script>
+
+}

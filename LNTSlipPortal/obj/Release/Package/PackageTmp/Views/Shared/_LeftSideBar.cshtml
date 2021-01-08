@@ -1,0 +1,42 @@
+﻿@using LNTSlipPortal.Models
+<div class="vertical-menu">
+    <div data-simplebar class="h-100">
+        <div id="sidebar-menu">
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li>
+                    <a href="/Home/Index" class=" waves-effect">
+                        <i class="mdi mdi-database"></i>
+                        <span>Dashboard</span>
+
+                    </a>
+                </li>
+                @{ var sessionRole = Session["RoleId"];
+                    var UserRole = sessionRole != null ? Convert.ToInt32(sessionRole) : 0;
+                }
+                @if (UserRole != 0 && UserRole ==  Convert.ToInt32(Common.Role.Admin))
+                {
+                    <li>
+                        <a href="/Employee/Index" class=" waves-effect">
+                            <i class="mdi mdi-account-settings"></i>
+                            <span>Manage Employees</span>
+                        </a>
+                    </li>
+                }
+                <li>
+                    <a href="/RAWS/Index" class=" waves-effect">
+                        <i class="mdi mdi-book"></i>
+                        <span>Manage RAWS</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="metismenu list-unstyled lnkLogout">
+                <li>
+                    <a href="/Login/Logout" class=" waves-effect">
+                        <i class=" mdi mdi-logout"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
